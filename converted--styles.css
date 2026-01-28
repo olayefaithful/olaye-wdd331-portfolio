@@ -1,0 +1,193 @@
+/*
+Reflection on Conversion Process:
+
+Converting both Sass and Less to native CSS was mostly straightforward. Variables were easily replaced with CSS custom properties, and native CSS nesting allowed us to keep the structure readable. Calculations with calc() worked perfectly. Lighten() and darken() functions required color-mix() in native CSS, which preserves the same visual effect.
+
+The main challenge was handling mixins. Native CSS does not have mixins, so I used CSS custom properties to store shared button values (padding, border-radius, font-weight) and duplicated the properties in each button variant. This keeps the functionality intact without requiring HTML changes.
+
+Overall, native CSS simplifies maintenance and removes the need for compilation, but preprocessors still have advantages in very large projects with repeated patterns or complex logic.
+*/
+
+/* ===== CONVERSION FROM SASS ===== */
+/* Reflection: Converted Sass variables, nesting, mixins, and color functions to native CSS. Used color-mix() for lighten/darken. Shared button styles handled via variables. */
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --base-spacing: 1rem;
+    --border-radius: 0.5rem;
+    --btn-padding-vertical: var(--base-spacing);
+    --btn-padding-horizontal: calc(var(--base-spacing) * 1.5);
+    --btn-border-radius: var(--border-radius);
+    --btn-font-weight: 600;
+    --btn-transition: all 0.3s ease;
+}
+
+/* Navigation component */
+.navigation {
+    background-color: var(--primary-color);
+    padding: var(--base-spacing);
+
+    & .nav-list {
+        display: flex;
+        gap: var(--base-spacing);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        & li a {
+            color: white;
+            text-decoration: none;
+            padding: calc(var(--base-spacing) * 0.5);
+            border-radius: calc(var(--border-radius) * 0.5);
+
+            &:hover {
+                background-color: color-mix(in srgb, var(--primary-color) 90%, white);
+            }
+
+            &.active {
+                background-color: var(--secondary-color);
+            }
+        }
+    }
+}
+
+/* Button styles */
+.btn {
+    padding: var(--btn-padding-vertical) var(--btn-padding-horizontal);
+    border: none;
+    border-radius: var(--btn-border-radius);
+    font-weight: var(--btn-font-weight);
+    cursor: pointer;
+    transition: var(--btn-transition);
+
+    &.btn-primary {
+        background-color: var(--secondary-color);
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--secondary-color) 92%, black);
+        }
+    }
+
+    &.btn-danger {
+        background-color: var(--accent-color);
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--accent-color) 92%, black);
+        }
+    }
+}
+
+/* Card component */
+.card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: calc(var(--base-spacing) * 1.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    & .card-header {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: var(--base-spacing);
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: calc(var(--base-spacing) * 0.5);
+    }
+
+    & .card-body {
+        color: #333;
+        line-height: 1.6;
+    }
+}
+
+/* ===== CONVERSION FROM LESS ===== */
+/* Reflection: Converted Less variables, nesting, mixins, and color functions to native CSS. Used color-mix() for lighten/darken. Shared button styles handled via variables. */
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --base-spacing: 1rem;
+    --border-radius: 0.5rem;
+    --btn-padding-vertical: var(--base-spacing);
+    --btn-padding-horizontal: calc(var(--base-spacing) * 1.5);
+    --btn-border-radius: var(--border-radius);
+    --btn-font-weight: 600;
+    --btn-transition: all 0.3s ease;
+}
+
+/* Navigation component */
+.navigation {
+    background-color: var(--primary-color);
+    padding: var(--base-spacing);
+
+    & .nav-list {
+        display: flex;
+        gap: var(--base-spacing);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        & li a {
+            color: white;
+            text-decoration: none;
+            padding: calc(var(--base-spacing) * 0.5);
+            border-radius: calc(var(--border-radius) * 0.5);
+
+            &:hover {
+                background-color: color-mix(in srgb, var(--primary-color) 90%, white);
+            }
+
+            &.active {
+                background-color: var(--secondary-color);
+            }
+        }
+    }
+}
+
+/* Button styles */
+.btn {
+    padding: var(--btn-padding-vertical) var(--btn-padding-horizontal);
+    border: none;
+    border-radius: var(--btn-border-radius);
+    font-weight: var(--btn-font-weight);
+    cursor: pointer;
+    transition: var(--btn-transition);
+
+    &.btn-primary {
+        background-color: var(--secondary-color);
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--secondary-color) 92%, black);
+        }
+    }
+
+    &.btn-danger {
+        background-color: var(--accent-color);
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--accent-color) 92%, black);
+        }
+    }
+}
+
+/* Card component */
+.card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: calc(var(--base-spacing) * 1.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    & .card-header {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: var(--base-spacing);
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: calc(var(--base-spacing) * 0.5);
+    }
+
+    & .card-body {
+        color: #333;
+        line-height: 1.6;
+    }
+}
