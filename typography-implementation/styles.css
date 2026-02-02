@@ -1,0 +1,193 @@
+/* ============================
+   FONT LOADING
+   ============================ */
+
+/* Variable font: Inter (Google Fonts, self-hosted via @font-face) */
+@font-face {
+  font-family: "Inter";
+  src: url("https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK5xS4JZkZQ.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================
+   ROOT TYPOGRAPHY SYSTEM
+   ============================ */
+
+:root {
+  /* Font families */
+  --font-base: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Base sizing */
+  --font-base-size: 1rem; /* 16px */
+  --scale-ratio: 1.333; /* Perfect fourth */
+
+  /* Modular scale */
+  --step--1: calc(var(--font-base-size) / var(--scale-ratio));
+  --step-0: var(--font-base-size);
+  --step-1: calc(var(--step-0) * var(--scale-ratio));
+  --step-2: calc(var(--step-1) * var(--scale-ratio));
+  --step-3: calc(var(--step-2) * var(--scale-ratio));
+  --step-4: calc(var(--step-3) * var(--scale-ratio));
+
+  /* Line height & rhythm */
+  --baseline: 1.5rem;
+  --line-height-base: 1.6;
+
+  /* Measure */
+  --measure-body: 66ch;
+  --measure-narrow: 45ch;
+
+  /* Colors */
+  --color-text: #1f2933;
+  --color-muted: #6b7280;
+  --color-accent: #2563eb;
+  --color-border: #e5e7eb;
+  --color-bg-soft: #f9fafb;
+}
+
+/* ============================
+   BASE STYLES
+   ============================ */
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: var(--font-base);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  margin: 0;
+  background: white;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: calc(var(--baseline) * 2);
+  padding: calc(var(--baseline) * 2);
+}
+
+article {
+  max-width: var(--measure-body);
+}
+
+aside {
+  max-width: var(--measure-narrow);
+}
+
+/* ============================
+   HEADINGS (HIERARCHY)
+   ============================ */
+
+h1 {
+  font-size: clamp(2.5rem, 2.2rem + 1vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: var(--baseline);
+}
+
+h2 {
+  font-size: var(--step-3);
+  margin-top: calc(var(--baseline) * 2);
+  margin-bottom: var(--baseline);
+}
+
+h3 {
+  font-size: var(--step-2);
+  margin-top: calc(var(--baseline) * 1.5);
+  margin-bottom: calc(var(--baseline) / 2);
+}
+
+h4 {
+  font-size: var(--step-1);
+  margin-top: var(--baseline);
+  margin-bottom: calc(var(--baseline) / 2);
+}
+
+/* ============================
+   BODY TEXT
+   ============================ */
+
+p {
+  margin-bottom: var(--baseline);
+}
+
+.lead {
+  font-size: var(--step-1);
+  line-height: 1.7;
+}
+
+.small {
+  font-size: var(--step--1);
+  color: var(--color-muted);
+}
+
+/* ============================
+   LISTS & QUOTES
+   ============================ */
+
+ul,
+ol {
+  margin-bottom: var(--baseline);
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: calc(var(--baseline) / 2);
+}
+
+blockquote {
+  border-left: 4px solid var(--color-accent);
+  padding-left: var(--baseline);
+  margin: calc(var(--baseline) * 1.5) 0;
+  font-style: italic;
+}
+
+cite {
+  display: block;
+  margin-top: calc(var(--baseline) / 2);
+  font-size: var(--step--1);
+  color: var(--color-muted);
+}
+
+/* ============================
+   UI COMPONENTS
+   ============================ */
+
+.card,
+.callout {
+  background: var(--color-bg-soft);
+  padding: var(--baseline);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  margin-bottom: var(--baseline);
+}
+
+nav a {
+  margin-right: 1rem;
+  text-decoration: none;
+  font-size: var(--step--1);
+  color: var(--color-text);
+}
+
+nav a:hover {
+  color: var(--color-accent);
+}
+
+/* ============================
+   RESPONSIVE ADJUSTMENTS
+   ============================ */
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    max-width: 100%;
+  }
+}
