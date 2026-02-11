@@ -1,0 +1,20 @@
+/**
+ * Main CSS Entry Point
+ * This file imports all CSS modules in the correct order.
+ * PostCSS will process these @import statements and combine them into a single file.
+ */
+
+/* Base: Variables, colors, fonts, and foundational styles */
+@import 'base/variables.css';
+@import 'base/base.css';
+
+/* Layout: Page structure and major layout patterns */
+@import 'layout/layout.css';
+
+/* Components: Reusable UI components */
+@import 'components/card.css';
+
+/* Utilities: Single-purpose helper classes */
+@import 'utilities/utilities.css';
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6Im1haW4ubWluLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogTWFpbiBDU1MgRW50cnkgUG9pbnRcbiAqIFRoaXMgZmlsZSBpbXBvcnRzIGFsbCBDU1MgbW9kdWxlcyBpbiB0aGUgY29ycmVjdCBvcmRlci5cbiAqIFBvc3RDU1Mgd2lsbCBwcm9jZXNzIHRoZXNlIEBpbXBvcnQgc3RhdGVtZW50cyBhbmQgY29tYmluZSB0aGVtIGludG8gYSBzaW5nbGUgZmlsZS5cbiAqL1xuXG4vKiBCYXNlOiBWYXJpYWJsZXMsIGNvbG9ycywgZm9udHMsIGFuZCBmb3VuZGF0aW9uYWwgc3R5bGVzICovXG5AaW1wb3J0ICdiYXNlL3ZhcmlhYmxlcy5jc3MnO1xuQGltcG9ydCAnYmFzZS9iYXNlLmNzcyc7XG5cbi8qIExheW91dDogUGFnZSBzdHJ1Y3R1cmUgYW5kIG1ham9yIGxheW91dCBwYXR0ZXJucyAqL1xuQGltcG9ydCAnbGF5b3V0L2xheW91dC5jc3MnO1xuXG4vKiBDb21wb25lbnRzOiBSZXVzYWJsZSBVSSBjb21wb25lbnRzICovXG5AaW1wb3J0ICdjb21wb25lbnRzL2NhcmQuY3NzJztcblxuLyogVXRpbGl0aWVzOiBTaW5nbGUtcHVycG9zZSBoZWxwZXIgY2xhc3NlcyAqL1xuQGltcG9ydCAndXRpbGl0aWVzL3V0aWxpdGllcy5jc3MnO1xuIl19 */
