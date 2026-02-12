@@ -1,0 +1,108 @@
+/**
+ * Dashboard Layout
+ * TODO: Implement a dashboard with header, sidebar, main content area, and footer
+ * 
+ * Requirements:
+ * - Header should be fixed height with items positioned using Flexbox
+ * - Sidebar should be fixed width (use var(--sidebar-width))
+ * - Main content should fill remaining space
+ * - Footer should stick to the bottom of the viewport
+ * - Cards in main content should use nested Flexbox with sticky footers
+ */
+
+/* TODO: Style the dashboard container
+ * Hint: Use display: flex with flex-direction: column and min-height: 100vh
+ * This creates a full-height column flex container
+ */
+/* Dashboard container */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    height: var(--header-height);
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0 var(--spacing-lg);
+}
+
+.dashboard-user-menu {
+    margin-left: auto;
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* Main body (sidebar + content) */
+.dashboard-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+/* Sidebar */
+.dashboard-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    background-color: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    padding: var(--spacing-lg);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content */
+.dashboard-main {
+    flex: 1;
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+}
+
+/* Cards container */
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+/* Individual card */
+.dashboard-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 250px;
+    background-color: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-med);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Card body grows */
+.dashboard-card-body {
+    flex: 1;
+    padding: var(--spacing-med);
+}
+
+/* Card footer stays at bottom */
+.dashboard-card-footer {
+    padding: var(--spacing-med);
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+}
+
+/* Footer */
+.dashboard-footer {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding: 0 var(--spacing-lg);
+}
